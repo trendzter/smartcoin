@@ -292,7 +292,7 @@ void ThreadIRCSeed2(void* parg)
                 Send(hSocket, strprintf("NICK %s\r", strMyName.c_str()).c_str());
             }
         }
-        
+
         if (fTestNet) {
             Send(hSocket, "JOIN #smartcoin2TEST3\r");
             Send(hSocket, "WHO #smartcoin2TEST3\r");

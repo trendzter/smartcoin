@@ -1,7 +1,7 @@
 SmartCoin (SMC)
 ===========
 ### Info
-SmartCoin is a fork of the Litecoin project that includes significant differences from the original code. Most noticably the block rewards are different, 51.2 million versus 84 million (LiteCoin). Block reward halfing is also changed. All of the SmartCoins are expected to be mined within 8 months.
+SmartCoin is a fork of the Litecoin project that includes significant differences from the original code. Most noticably the block rewards are different, 51.2 million versus 84 million (LiteCoin). Block reward halfing is also changed.
 ### Compiling
 #### OS X
 SmartCoin is configured to be compiled through Homebrew on OS X.
