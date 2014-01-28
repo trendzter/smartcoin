@@ -7,6 +7,7 @@ src/*.exe
 *.o
 *.patch
 .litecoin
+*.dll
 
 # Compilation and Qt preprocessor part
 *.qm
@@ -23,6 +24,11 @@ qrc_*.cpp
 
 # Qt creator
 *.pro.user
+Makefile.Debug
+Makefile.Release
+object_script.Smartcoin-qt.Debug
+object_script.Smartcoin-qt.Release
+release/
 
 # Mac specific
 .DS_Store

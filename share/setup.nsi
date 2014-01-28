@@ -5,7 +5,7 @@ SetCompressor /SOLID lzma
 
 # General Symbol Definitions
 !define REGKEY "SOFTWARE\$(^Name)"
-!define VERSION 1.0.0
+!define VERSION 0.0.1
 !define COMPANY "SmartCoin project"
 !define URL http://www.getsmartcoin.com/
 
