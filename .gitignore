@@ -12,8 +12,9 @@ src/*.exe
 # Compilation and Qt preprocessor part
 *.qm
 Makefile
-litecoin-qt
-Litecoin-Qt.app
+#litecoin-qt
+#Litecoin-Qt.app
+Smartcoin-qt
 
 # Unit-tests
 Makefile.test
