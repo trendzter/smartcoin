@@ -19,6 +19,7 @@ CONFIG += no_include_pwd
 #BDB_LIB_PATH=C:/deps/db-4.8.30.NC/build_unix
 #OPENSSL_INCLUDE_PATH=C:/deps/openssl-1.0.1e/include
 #OPENSSL_LIB_PATH=C:/deps/openssl-1.0.1e
+=======
 
 OBJECTS_DIR = build
 MOC_DIR = build
