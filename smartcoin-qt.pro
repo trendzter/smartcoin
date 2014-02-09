@@ -1,6 +1,6 @@
 TEMPLATE = app
 TARGET = Smartcoin-qt
-VERSION = 0.0.1
+VERSION = 0.0.2
 INCLUDEPATH += src src/json src/qt
 DEFINES += QT_GUI BOOST_THREAD_USE_LIB BOOST_SPIRIT_THREADSAFE BOOST_THREAD_PROVIDES_GENERIC_SHARED_MUTEX_ON_WIN __NO_SYSTEM_INCLUDES
 CONFIG += no_include_pwd
@@ -20,7 +20,7 @@ CONFIG += no_include_pwd
 #BDB_LIB_PATH=C:/deps/db-4.8.30.NC/build_unix
 #OPENSSL_INCLUDE_PATH=C:/deps/openssl-1.0.1e/include
 #OPENSSL_LIB_PATH=C:/deps/openssl-1.0.1e
->>>>>>> ce56253836a8e995771bb5c1c9dc1a3095e169cb
+
 
 OBJECTS_DIR = build
 MOC_DIR = build

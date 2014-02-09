@@ -5,7 +5,7 @@ SetCompressor /SOLID lzma
 
 # General Symbol Definitions
 !define REGKEY "SOFTWARE\$(^Name)"
-!define VERSION 0.0.1
+!define VERSION 0.0.2
 !define COMPANY "SmartCoin project"
 !define URL http://www.getsmartcoin.com/
 
@@ -51,7 +51,7 @@ CRCCheck on
 XPStyle on
 BrandingText " "
 ShowInstDetails show
-VIProductVersion 0.1.0.0
+VIProductVersion 0.1.1.0
 VIAddVersionKey ProductName SmartCoin
 VIAddVersionKey ProductVersion "${VERSION}"
 VIAddVersionKey CompanyName "${COMPANY}"
