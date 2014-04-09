@@ -1,13 +1,15 @@
 TEMPLATE = app
 TARGET = Smartcoin-qt
-VERSION = 0.0.2
+VERSION = 1.3.1.0
 INCLUDEPATH += src src/json src/qt
+QT += core gui network
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 DEFINES += QT_GUI BOOST_THREAD_USE_LIB BOOST_SPIRIT_THREADSAFE BOOST_THREAD_PROVIDES_GENERIC_SHARED_MUTEX_ON_WIN __NO_SYSTEM_INCLUDES
 CONFIG += no_include_pwd
 
 # UNCOMMENT THIS SECTION TO BUILD ON WINDOWS
 
-=======
+#=======
 #windows:LIBS += -lshlwapi
 #LIBS += $$join(BOOST_LIB_PATH,,-L,) $$join(BDB_LIB_PATH,,-L,) $$join(OPENSSL_LIB_PATH,,-L,) $$join(QRENCODE_LIB_PATH,,-L,)
 #LIBS += -lssl -lcrypto -ldb_cxx$$BDB_LIB_SUFFIX
@@ -20,8 +22,7 @@ CONFIG += no_include_pwd
 #BDB_LIB_PATH=C:/deps/db-4.8.30.NC/build_unix
 #OPENSSL_INCLUDE_PATH=C:/deps/openssl-1.0.1e/include
 #OPENSSL_LIB_PATH=C:/deps/openssl-1.0.1e
-
-=======
+#=======
 
 OBJECTS_DIR = build
 MOC_DIR = build
@@ -91,6 +92,8 @@ contains(BITCOIN_NEED_QT_PLUGINS, 1) {
     DEFINES += BITCOIN_NEED_QT_PLUGINS
     QTPLUGIN += qcncodecs qjpcodecs qtwcodecs qkrcodecs qtaccessiblewidgets
 }
+
+#greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 
 # regenerate src/build.h
@@ -295,7 +298,7 @@ QMAKE_EXTRA_COMPILERS += TSQM
 
 # "Other files" to show in Qt Creator
 OTHER_FILES += \
-    contrib/gitian-descriptors/* doc/*.rst doc/*.txt doc/README README.md res/bitcoin-qt.rc \
+    contrib/gitian-descriptors/* doc/*.rst doc/*.txt doc/*.md res/bitcoin-qt.rc \
     share/setup.nsi
 
 # platform specific defaults, if not overridden on command line

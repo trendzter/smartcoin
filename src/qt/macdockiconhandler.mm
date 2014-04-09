@@ -4,7 +4,9 @@
 #include <QtGui/QMenu>
 #include <QtGui/QWidget>
 
-extern void qt_mac_set_dock_menu(QMenu*);
+#if QT_VERSION < 0x050000
+extern void qt_mac_set_dock_menu(QMenu *);
+#endif
 
 #undef slots
 #include <Cocoa/Cocoa.h>
@@ -51,7 +53,9 @@ MacDockIconHandler::MacDockIconHandler() : QObject()
 
     this->m_dummyWidget = new QWidget();
     this->m_dockMenu = new QMenu(this->m_dummyWidget);
+#if QT_VERSION < 0x050000
     qt_mac_set_dock_menu(this->m_dockMenu);
+#endif
     [pool release];
 }
 

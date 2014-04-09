@@ -2,7 +2,9 @@
 #include "../guiutil.h"
 #include "../walletmodel.h"
 
+#if QT_VERSION < 0x050000
 #include <QUrl>
+#endif
 
 /*
 struct SendCoinsRecipient

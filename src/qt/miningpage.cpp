@@ -86,10 +86,17 @@ void MiningPage::startPoolMining()
     QString urlLine = QString("%1:%2").arg(url, ui->portLine->text());
     QString userpassLine = QString("%1:%2").arg(ui->usernameLine->text(), ui->passwordLine->text());
     args << "--algo" << "scrypt";
+#if QT_VERSION < 0x050000
     args << "--scantime" << ui->scantimeBox->text().toAscii();
     args << "--url" << urlLine.toAscii();
     args << "--userpass" << userpassLine.toAscii();
     args << "--threads" << ui->threadsBox->text().toAscii();
+#else
+	args << "--scantime" << ui->scantimeBox->text().toLatin1();
+    args << "--url" << urlLine.toLatin1();
+    args << "--userpass" << userpassLine.toLatin1();
+    args << "--threads" << ui->threadsBox->text().toLatin1();
+#endif
     args << "--retries" << "-1"; // Retry forever.
     args << "-P"; // This is needed for this to work correctly on Windows. Extra protocol dump helps flush the buffer quicker.
 
@@ -230,11 +237,12 @@ void MiningPage::minerFinished()
 
 void MiningPage::minerStarted()
 {
-    if (!minerActive)
+    if (!minerActive) {
         if (getMiningType() == ClientModel::SoloMining)
             reportToList("Solo mining started.", ERROR, NULL);
         else
             reportToList("Miner started. You might not see any output for a few minutes.", STARTED, NULL);
+	}
     minerActive = true;
     resetMiningButton();
     model->setMining(getMiningType(), true, initThreads, 0);
