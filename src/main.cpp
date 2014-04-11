@@ -1094,11 +1094,11 @@ unsigned int static GetNextWorkRequired(const CBlockIndex* pindexLast, const CBl
     int DiffMode = 1;
 
     if (fTestNet) {
-        if (pindexLast->nHeight > 50) { DiffMode = 2; }
+        if (pindexLast->nHeight+1 >= 50) { DiffMode = 2; }
     }
     else {
-        if (pindexLast->nHeight > forkBlock1 && pindexLast->nHeight <= forkBlock2) { DiffMode = 2; }
-        else if (pindexLast->nHeight > forkBlock2) { DiffMode = 3; }
+        if (pindexLast->nHeight+1 >= forkBlock1 && pindexLast->nHeight+1 < forkBlock2) { DiffMode = 2; }
+        else if (pindexLast->nHeight+1 > forkBlock2) { DiffMode = 3; }
     }
 
     switch (DiffMode) {
