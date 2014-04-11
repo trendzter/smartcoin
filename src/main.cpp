@@ -829,12 +829,16 @@ uint256 static GetOrphanRoot(const CBlock* pblock)
 }
 
 
-static const int64 nTargetTimespan = 2400; // 6 hours
-static const int64 nTargetSpacing = 40; // 40 second blocks
-static const int64 nInterval = nTargetTimespan / nTargetSpacing; // 60 seconds
+static const int64 nTargetTimespan = 2400; // SmartCoin: 6 hours | should have been 21600
+static const int64 nTargetSpacing = 40; // SmartCoin: 40 second blocks
+static const int64 nInterval = nTargetTimespan / nTargetSpacing;
 static const int64 nReTargetHistoryFact = 4; // look at 4 times the retarget interval
+
 static const int64 forkBlock1 = 35000; // February 2014 fork
 static const int64 forkBlock2 = 200000; // April 2014 fork
+//static const int64 nTargetTimespan2 = 6 * 60 * 60; // SmartCoin: 6 hours | fixed // not used
+static const int64 nTargetSpacing2 = 30; // SmartCoin: 30 second blocks | change to 30
+
 
 int64 static GetBlockValue(int nHeight, int64 nFees)
 {
@@ -1028,29 +1032,31 @@ unsigned int static DigiShield(const CBlockIndex* pindexLast, const CBlock *pblo
     unsigned int nProofOfWorkLimit = bnProofOfWorkLimit.GetCompact();
     int blockstogoback = 0;
 
-    // set default to the original values
-    int64 retargetTimespan = nTargetSpacing; //Make sure we retarget every block
-    int64 retargetSpacing = nTargetSpacing;
+    // Retarget every block
+    int64 retargetTimespan = nTargetSpacing2; // 30 seconds
+    int64 retargetSpacing = nTargetSpacing2; // 30 seconds
     int64 retargetInterval = retargetTimespan / retargetSpacing;
-    // Genesis block
-    if (pindexLast == NULL) return nProofOfWorkLimit;
     
+    // Genesis block
+    if (pindexLast == NULL)
+        return nProofOfWorkLimit;
+
     // Only change once per interval
     if ((pindexLast->nHeight+1) % retargetInterval != 0){
-      // Special difficulty rule for testnet:
+        // Special difficulty rule for testnet
 		if (fTestNet){
 			// If the new block's timestamp is more than 2* 10 minutes
-			// then allow mining of a min-difficulty block.
+            //  then allow mining of a min-difficulty block.
 			if (pblock->nTime > pindexLast->nTime + retargetSpacing*2)
 				return nProofOfWorkLimit;
-		else {
+        }
+        else {
 			// Return the last non-special-min-difficulty-rules-block
 			const CBlockIndex* pindex = pindexLast;
 			while (pindex->pprev && pindex->nHeight % retargetInterval != 0 && pindex->nBits == nProofOfWorkLimit) 
                 pindex = pindex->pprev;
             return pindex->nBits;
 		}
-      }  
       return pindexLast->nBits;
     }
     
