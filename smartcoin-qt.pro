@@ -1,6 +1,6 @@
 TEMPLATE = app
 TARGET = Smartcoin-qt
-VERSION = 1.3.1.0
+VERSION = 1.3.0.1
 INCLUDEPATH += src src/json src/qt
 QT += core gui network
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
@@ -9,20 +9,19 @@ CONFIG += no_include_pwd
 
 # UNCOMMENT THIS SECTION TO BUILD ON WINDOWS
 
-#=======
 #windows:LIBS += -lshlwapi
 #LIBS += $$join(BOOST_LIB_PATH,,-L,) $$join(BDB_LIB_PATH,,-L,) $$join(OPENSSL_LIB_PATH,,-L,) $$join(QRENCODE_LIB_PATH,,-L,)
 #LIBS += -lssl -lcrypto -ldb_cxx$$BDB_LIB_SUFFIX
 #windows:LIBS += -lws2_32 -lole32 -loleaut32 -luuid -lgdi32
-#LIBS += -lboost_system -lboost_filesystem -lboost_program_options -lboost_thread
-#BOOST_LIB_SUFFIX=
-#BOOST_INCLUDE_PATH=C:/deps/
-#BOOST_LIB_PATH=C:/deps/boost_1_54_0/stage/lib
-#BDB_INCLUDE_PATH=C:/deps/db-4.8.30.NC/build_unix
-#BDB_LIB_PATH=C:/deps/db-4.8.30.NC/build_unix
-#OPENSSL_INCLUDE_PATH=C:/deps/openssl-1.0.1e/include
-#OPENSSL_LIB_PATH=C:/deps/openssl-1.0.1e
-#=======
+#LIBS += -lboost_system-mgw46-mt-sd-1_53 -lboost_filesystem-mgw46-mt-sd-1_53 -lboost_program_options-mgw46-mt-sd-1_53 -lboost_thread-mgw46-mt-sd-1_53
+#BOOST_LIB_SUFFIX=-mgw46-mt-sd-1_53
+#BOOST_INCLUDE_PATH=C:/deps/boost
+#BOOST_LIB_PATH=C:/deps/boost/stage/lib
+#BDB_INCLUDE_PATH=C:/deps/db/build_unix
+#BDB_LIB_PATH=C:/deps/db/build_unix
+#OPENSSL_INCLUDE_PATH=C:/deps/openssl/include
+#OPENSSL_LIB_PATH=C:/deps/openssl
+
 
 OBJECTS_DIR = build
 MOC_DIR = build
@@ -373,5 +372,3 @@ contains(RELEASE, 1) {
 }
 
 system($$QMAKE_LRELEASE -silent $$_PRO_FILE_)
-
-
