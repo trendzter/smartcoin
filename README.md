@@ -5,16 +5,16 @@ Bitcointalk: https://bitcointalk.org/index.php?topic=555426
 Reddit: http://www.reddit.com/r/smartcoin/  
 Forum: http://smartcoinforum.com/  
 Blockchain: http://altexplorer.net/chain/smartcoin  
-Wallet: https://github.com/psionin/smartcoin/releases/download/v1.3.2.0/smartcoin-1.3.2.0.zip
+Wallet: https://github.com/psionin/smartcoin/releases/download/0.9/smartcoin-0.9.zip
 
 
 SmartCoin Attributes
 --------------------
-PoW Algorithm: Scrypt  
-Block Interval: 30 seconds  
+PoW Algorithm: Scrypt / X11 after July 24  
+Block Interval: 30 seconds / 2 minutes after July 24  
 Difficulty Retarget: every block (DigiShield)  
-Subsidy Distribution: 64 coins per block to 200K blocks, 32 coins from block 200K to 400K, 1/n reduction every 400K blocks (~4.5 months)  
-Total Coin Supply: ~54 million coins
+Subsidy Distribution: 64 from block 1K to 200K, 32 from 200K to 300K, 16 with yearly halving after 300K
+Total Coin Supply: ~24.5 million coins
 
 
 License
