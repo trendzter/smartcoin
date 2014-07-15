@@ -1,9 +1,7 @@
 SmartCoin (SMC)
 ==============
 Website: http://www.smartcoin.cc  
-Bitcointalk: https://bitcointalk.org/index.php?topic=555426  
-Reddit: http://www.reddit.com/r/smartcoin/  
-Forum: http://smartcoinforum.com/  
+Bitcointalk: https://bitcointalk.org/index.php?topic=675821.0  
 Blockchain: http://altexplorer.net/chain/smartcoin  
 Wallet: https://github.com/psionin/smartcoin/releases/download/0.9/smartcoin-0.9.zip
 
