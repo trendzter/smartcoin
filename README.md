@@ -1,6 +1,6 @@
 SmartCoin (SMC)
 ==============
-Website: http://www.smartcoin.cc
+Website: http://www.smartcoin.cc  
 Bitcointalk: https://bitcointalk.org/index.php?topic=555426  
 Reddit: http://www.reddit.com/r/smartcoin/  
 Forum: http://smartcoinforum.com/  
