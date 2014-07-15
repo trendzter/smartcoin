@@ -1,5 +1,5 @@
 TEMPLATE = app
-TARGET = Smartcoin-qt
+TARGET = smartcoin-qt
 VERSION = 0.9
 INCLUDEPATH += src src/json src/qt
 QT += core gui network
