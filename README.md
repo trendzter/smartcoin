@@ -28,6 +28,7 @@ The master branch should have the latest stable release code.
 
 Build Instructions
 ------------------
+###### Linux  
 To build on Linux, first make sure you have the necessary dependencies
 ```
 apt-get update && apt-get upgrade
@@ -42,7 +43,7 @@ git clone https://github.com/psionin/smartcoin
 ```
 Change ownership for a leveldb file so that it can build
 ```
-  chmod 755 src/leveldb/build_detect_platform  
+chmod 755 src/leveldb/build_detect_platform  
 ```
 Compile and move smartcoind
 ```
