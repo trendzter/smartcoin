@@ -28,11 +28,34 @@ The master branch should have the latest stable release code.
 
 Build Instructions
 ------------------
+To build on Linux, first make sure you have the necessary dependencies
+```
+apt-get update && apt-get upgrade
+apt-get install ntp git build-essential libssl-dev libdb-dev libdb++-dev libboost-all-dev libqrencode-dev
+
+wget http://miniupnp.free.fr/files/download.php?file=miniupnpc-1.8.tar.gz && tar -zxf download.php\?file\=miniupnpc-1.8.tar.gz && cd miniupnpc-1.8/
+make && make install && cd .. && rm -rf miniupnpc-1.8 download.php\?file\=miniupnpc-1.8.tar.gz
+```
+Get the source code
+```
+git clone https://github.com/psionin/smartcoin
+```
+Change ownership for a leveldb file so that it can build
+```
+  chmod 755 src/leveldb/build_detect_platform  
+```
+Compile and move smartcoind
+```
+cd smartcoin/src
+make -f makefile.unix USE_UPNP=1 USE_IPV6=1
+strip smartcoind
+mv smartcoind ../..
+```
+
+
 ###### Windows  
 See \doc\build-msw.txt
 
 ###### OS X  
 See \doc\build-osx.txt
 
-###### Linux   
-See \doc\build-unix.txt
