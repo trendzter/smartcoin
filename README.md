@@ -2,7 +2,7 @@ SmartCoin (SMC)
 ==============
 Website: http://www.smartcoin.cc  
 Bitcointalk: https://bitcointalk.org/index.php?topic=675821.0  
-Blockchain: http://altexplorer.net/chain/smartcoin  
+Blockchain: http://lavastorm.net:2750/chain/Smartcoin
 Wallet: https://github.com/psionin/smartcoin/releases/download/0.9/smartcoin-0.9.zip
 
 
@@ -11,7 +11,7 @@ SmartCoin Attributes
 PoW Algorithm: Scrypt / X11 after July 24  
 Block Interval: 30 seconds / 2 minutes after July 24  
 Difficulty Retarget: every block (DigiShield)  
-Subsidy Distribution: 64 from block 1K to 200K, 32 from 200K to 300K, 16 with yearly halving after 300K
+Subsidy Distribution: 64 from block 1K to 200K, 32 from 200K to 300K, 16 with yearly halving after 300K  
 Total Coin Supply: ~24.5 million coins
 
 
