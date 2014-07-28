@@ -2,7 +2,8 @@ SmartCoin (SMC)
 ==============
 Website: http://www.smartcoin.cc  
 Bitcointalk: https://bitcointalk.org/index.php?topic=675821.0  
-Blockchain: http://lavastorm.net:2750/chain/Smartcoin
+Blockchain: http://lavastorm.net:2750/chain/Smartcoin  
+Alt blockchain: http://stonedpuppy.com/explorer.php  
 Wallet: https://github.com/psionin/smartcoin/releases/download/0.9/smartcoin-0.9.zip
 
 
