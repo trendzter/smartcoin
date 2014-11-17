@@ -1115,7 +1115,7 @@ int64 static GetBlockValue(int nHeight, int64 nFees)
 // Min work required nTime after min work required was nBase
 unsigned int ComputeMinWork(unsigned int nBase, int64 nTime, int bTime)
 {
-	if ((!fTestNet && bTime >= X11_START) || (fTestNet && bTime >= 1405296000)) {
+	if ((!fTestNet && (unsigned)bTime >= X11_START) || (fTestNet && (unsigned)bTime >= 1405296000)) {
 		nTargetSpacing = 60 * 2;
 	}
 	else {
