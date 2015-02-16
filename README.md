@@ -47,7 +47,7 @@ chmod 755 src/leveldb/build_detect_platform
 ```
 Compile and move smartcoind
 ```
-cd smartcoin/src
+cd src
 make -f makefile.unix USE_UPNP=1 USE_IPV6=1
 strip smartcoind
 mv smartcoind ../..
