@@ -51,11 +51,3 @@ make -f makefile.unix USE_UPNP=1 USE_IPV6=1
 strip smartcoind
 mv smartcoind ../..
 ```
-
-
-###### Windows  
-See \doc\build-msw.txt
-
-###### OS X  
-See \doc\build-osx.txt
-
