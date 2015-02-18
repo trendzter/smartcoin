@@ -8,16 +8,16 @@ Wallet: https://github.com/psionin/smartcoin/releases/download/0.9.1/smartcoin-0
 
 SmartCoin Attributes
 --------------------
-PoW Algorithm: Scrypt / X11 after July 24  
-Block Interval: 30 seconds / 2 minutes after July 24  
-Difficulty Retarget: every block (DigiShield)  
-Subsidy Distribution: 64 from block 1K to 200K, 32 from 200K to 300K, 16 with yearly halving after 300K  
+PoW Algorithm: X11  
+Block Interval: 2 minutes  
+Difficulty Retarget: DarkGravityWave3  
+Block Subsidy: 16 SMC  
 Total Coin Supply: ~24.5 million coins
 
 
 License
 -------
-Copyright (c) 2009-2014 Bitcoin, Litecoin, SmartCoin Developers  
+Copyright (c) 2009-2015 Bitcoin, Litecoin, SmartCoin Developers  
 SmartCoin is released under the terms of the MIT license. See `COPYING` for more information or see http://opensource.org/licenses/MIT.
 
 
