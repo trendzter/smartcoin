@@ -13,8 +13,7 @@ Total Coin Supply: ~24.5 million coins
 
 License
 -------
-Copyright (c) 2009-2015 Bitcoin, Litecoin, SmartCoin Developers  
-SmartCoin is released under the terms of the MIT license. See `COPYING` for more information or see http://opensource.org/licenses/MIT.
+Copyright © 2009-2015 Bitcoin, Litecoin, and SmartCoin Developers. SmartCoin is released under the terms of the [MIT license](http://opensource.org/licenses/MIT).
 
 
 Source Code
