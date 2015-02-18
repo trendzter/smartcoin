@@ -1,4 +1,4 @@
-SmartCoin (SMC)
+![SMC Logo](http://i57.tinypic.com/2jer9s8.png)
 ==============
 Website: http://smartcoin.cc  
 Bitcointalk: https://bitcointalk.org/index.php?topic=675821.0  
