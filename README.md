@@ -41,6 +41,10 @@ Get the source code
 ```
 git clone https://github.com/psionin/smartcoin
 ```
+And go into the directory
+```
+cd smartcoin
+```
 Change ownership for a leveldb file so that it can build
 ```
 chmod 755 src/leveldb/build_detect_platform  
