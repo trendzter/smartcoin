@@ -1,9 +1,5 @@
-![SMC Logo](http://i57.tinypic.com/2jer9s8.png)
-==============
-Website: http://smartcoin.cc  
-Bitcointalk: https://bitcointalk.org/index.php?topic=675821.0  
-Blockchain: http://smc-explorer.lavastorm.net  
-Wallet: https://github.com/psionin/smartcoin/releases/download/0.9.1/smartcoin-0.9.1.zip
+![SMC Logo](http://i60.tinypic.com/nvxreo.png)
+<h4> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [smartcoin.cc](http://smartcoin.cc) &nbsp;&nbsp; [bitcointalk](https://bitcointalk.org/index.php?topic=675821.0) &nbsp;&nbsp; [explorer](http://smc-explorer.lavastorm.net) &nbsp;&nbsp; [wallet-win32](https://github.com/psionin/smartcoin/releases/download/0.9.1/smartcoin-0.9.1.zip)<h4>
 
 
 SmartCoin Attributes
