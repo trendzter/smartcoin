@@ -1,5 +1,5 @@
 ![SMC Logo](http://i60.tinypic.com/nvxreo.png)
-<h5> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [smartcoin.cc](http://smartcoin.cc) &nbsp;&nbsp; [bitcointalk](https://bitcointalk.org/index.php?topic=675821.0) &nbsp;&nbsp; [explorer](http://smc-explorer.lavastorm.net) &nbsp;&nbsp; [wallet-win32](https://github.com/psionin/smartcoin/releases/download/0.9.1/smartcoin-0.9.1.zip)<h5>
+<h5> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [smartcoin.cc](http://smartcoin.cc) &nbsp;&nbsp; [bitcointalk](https://bitcointalk.org/index.php?topic=675821.0) &nbsp;&nbsp; [explorer](http://smc-explorer.lavastorm.net) &nbsp;&nbsp; [wallet-win32](http://www.filedropper.com/smartcoin-091)<h5>
 <br>
 
 SmartCoin Attributes
