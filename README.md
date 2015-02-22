@@ -6,7 +6,7 @@ SmartCoin Attributes
 --------------------
 PoW Algorithm: X11  
 Block Interval: 2 minutes  
-Difficulty Retarget: DarkGravityWave3  
+Difficulty Retarget: DarkGravityWave  
 Block Subsidy: 16 SMC  
 Total Coin Supply: ~24.5 million coins
 
