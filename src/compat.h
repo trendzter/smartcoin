@@ -1,6 +1,5 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2012 The Bitcoin developers
-// Copyright (c) 2011-2012 Litecoin Developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 #ifndef _BITCOIN_COMPAT_H
@@ -11,6 +10,9 @@
 #define WIN32_LEAN_AND_MEAN 1
 #ifndef NOMINMAX
 #define NOMINMAX
+#endif
+#ifndef _MSC_VER
+#define FD_SETSIZE 1024 // max number of fds in fd_set
 #endif
 #include <winsock2.h>
 #include <mswsock.h>
@@ -26,7 +28,9 @@
 #include <ifaddrs.h>
 #endif
 
+#ifndef _MSC_VER
 typedef u_int SOCKET;
+#endif
 #ifdef WIN32
 #define MSG_NOSIGNAL        0
 #define MSG_DONTWAIT        0
