@@ -162,6 +162,18 @@ HEADERS += src/qt/bitcoingui.h \
     src/qt/aboutdialog.h \
     src/qt/editaddressdialog.h \
     src/qt/bitcoinaddressvalidator.h \
+    src/x11/sph_blake.h \
+    src/x11/sph_bmw.h \
+    src/x11/sph_cubehash.h \
+    src/x11/sph_echo.h \
+    src/x11/sph_groestl.h \
+    src/x11/sph_jh.h \
+    src/x11/sph_keccak.h \
+    src/x11/sph_luffa.h \
+    src/x11/sph_shavite.h \
+    src/x11/sph_simd.h \
+    src/x11/sph_skein.h \
+    src/x11/sph_types.h \
     src/alert.h \
     src/addrman.h \
     src/base58.h \
@@ -249,6 +261,18 @@ SOURCES += src/qt/bitcoin.cpp \
     src/qt/aboutdialog.cpp \
     src/qt/editaddressdialog.cpp \
     src/qt/bitcoinaddressvalidator.cpp \
+    src/x11/aes_helper.c \
+    src/x11/blake.c \
+    src/x11/bmw.c \
+    src/x11/cubehash.c \
+    src/x11/echo.c \
+    src/x11/groestl.c \
+    src/x11/jh.c \
+    src/x11/keccak.c \
+    src/x11/luffa.c \
+    src/x11/shavite.c \
+    src/x11/simd.c \
+    src/x11/skein.c \
     src/alert.cpp \
     src/version.cpp \
     src/sync.cpp \
