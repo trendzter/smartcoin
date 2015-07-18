@@ -19,7 +19,7 @@ The master branch has the latest stable release code for linux servers running [
 
 Build Instructions
 ------------------
-###### Linux (Ubuntu)  
+###### Linux (Ubuntu/Debian)  
 To build on Linux, first make sure you have the necessary dependencies
 ```
 apt-get update && apt-get upgrade
