@@ -18,7 +18,7 @@ Copyright © 2009-2015 Bitcoin, Litecoin, and SmartCoin Developers. SmartCoin is
 
 Source Code
 -----------
-The master branch should have the latest stable release code.
+The master branch has the latest stable release code for linux servers running [coin]d. See the 'msvc' branch for building the wallet in Visual Studio.
 
 
 Build Instructions
