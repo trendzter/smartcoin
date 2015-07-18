@@ -37,7 +37,7 @@ Then go into the directory
 ```
 cd smartcoin
 ```
-Change ownership for a leveldb file so that it can build
+Change permissions for a leveldb build file
 ```
 chmod 755 src/leveldb/build_detect_platform  
 ```
