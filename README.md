@@ -4,7 +4,7 @@
 
 SmartCoin Attributes
 --------------------
-X11 | DGW3 | 2 minute blocks | 24.5 mn total | 16 SMC per block
+X11 | DGW3 | 2 minute blocks | 24.5 mn total | 16 SMC / block
 
 
 License
@@ -14,7 +14,7 @@ Copyright © 2009-2015 Bitcoin, Litecoin, and SmartCoin Developers. SmartCoin is
 
 Source Code
 -----------
-The master branch has the latest stable release code for linux servers running [coin]d. See the 'msvc' branch for building the wallet in Visual Studio.
+The master branch has the latest stable release code for Linux servers running [coin]d. See 'msvc' branch for building the wallet in Visual Studio.
 
 
 Build Instructions
