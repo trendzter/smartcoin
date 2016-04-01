@@ -4,17 +4,23 @@ Smartcoin-Qt: Qt4 GUI for SmartCoin
 Build instructions
 ===================
 
-Debian
+Linux
 -------
 
 First, make sure that the required packages for Qt4 development of your
 distribution are installed, for Debian and Ubuntu these are:
 
+Debian / Ubuntu
 ::
 
     apt-get install qt4-qmake libqt4-dev build-essential libboost-dev libboost-system-dev \
         libboost-filesystem-dev libboost-program-options-dev libboost-thread-dev \
         libssl-dev libdb4.8++-dev
+        
+Arch
+::
+
+    pacman -Syu base-devel qt5 qt5-tools boost openssl miniupnpc db        
 
 then execute the following:
 
