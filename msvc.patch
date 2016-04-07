@@ -1,0 +1,248 @@
+diff --git a/src/addrman.h b/src/addrman.h
+index 7af6afd..79a8023 100644
+--- a/src/addrman.h
++++ b/src/addrman.h
+@@ -246,7 +246,7 @@ protected:
+ public:
+ 
+     IMPLEMENT_SERIALIZE
+-    (({
++    ({
+         // serialized format:
+         // * version byte (currently 0)
+         // * nKey
+@@ -280,7 +280,6 @@ public:
+             {
+                 int nUBuckets = ADDRMAN_NEW_BUCKET_COUNT;
+                 READWRITE(nUBuckets);
+-                std::map<int, int> mapUnkIds;
+                 int nIds = 0;
+                 for (std::map<int, CAddrInfo>::iterator it = am->mapInfo.begin(); it != am->mapInfo.end(); it++)
+                 {
+@@ -377,7 +376,8 @@ public:
+                 }
+             }
+         }
+-    });)
++    };)
++
+ 
+     CAddrMan() : vRandom(0), vvTried(ADDRMAN_TRIED_BUCKET_COUNT, std::vector<int>(0)), vvNew(ADDRMAN_NEW_BUCKET_COUNT, std::set<int>())
+     {
+diff --git a/src/main.cpp b/src/main.cpp
+index ce1d53b..f061911 100644
+--- a/src/main.cpp
++++ b/src/main.cpp
+@@ -998,11 +998,11 @@ bool GetTransaction(const uint256 &hash, CTransaction &txOut, uint256 &hashBlock
+                     fseek(file, postx.nTxOffset, SEEK_CUR);
+                     file >> txOut;
+                 } catch (std::exception &e) {
+-                    return error("%s() : deserialize or I/O error", __PRETTY_FUNCTION__);
++                    return error("%s() : deserialize or I/O error", BOOST_CURRENT_FUNCTION);
+                 }
+                 hashBlock = header.GetHash();
+                 if (txOut.GetHash() != hash)
+-                    return error("%s() : txid mismatch", __PRETTY_FUNCTION__);
++                    return error("%s() : txid mismatch", BOOST_CURRENT_FUNCTION);
+                 return true;
+             }
+         }
+@@ -1116,7 +1116,7 @@ int64 static GetBlockValue(int nHeight, int64 nFees)
+ // Min work required nTime after min work required was nBase
+ unsigned int ComputeMinWork(unsigned int nBase, int64 nTime, int bTime)
+ {
+-	if ((!fTestNet && (unsigned)bTime >= X11_START) || (fTestNet && (unsigned)bTime >= 1405296000)) {
++	if ((!fTestNet && bTime >= X11_START) || (fTestNet && bTime >= 1405296000)) {
+ 		nTargetSpacing = 60 * 2;
+ 	}
+ 	else {
+@@ -3228,7 +3228,7 @@ bool LoadExternalBlockFile(FILE* fileIn, CDiskBlockPos *dbp)
+                         break;
+                 }
+             } catch (std::exception &e) {
+-                printf("%s() : Deserialize or I/O error caught during load\n", __PRETTY_FUNCTION__);
++                printf("%s() : Deserialize or I/O error caught during load\n", BOOST_CURRENT_FUNCTION);
+             }
+         }
+         fclose(fileIn);
+diff --git a/src/main.h b/src/main.h
+index 6e1f3a5..16e0c30 100644
+--- a/src/main.h
++++ b/src/main.h
+@@ -716,7 +716,7 @@ public:
+ 
+     CTxOutCompressor(CTxOut &txoutIn) : txout(txoutIn) { }
+ 
+-    IMPLEMENT_SERIALIZE(({
++    IMPLEMENT_SERIALIZE({
+         if (!fRead) {
+             uint64 nVal = CompressAmount(txout.nValue);
+             READWRITE(VARINT(nVal));
+@@ -727,7 +727,7 @@ public:
+         }
+         CScriptCompressor cscript(REF(txout.scriptPubKey));
+         READWRITE(cscript);
+-    });)
++    };)
+ };
+ 
+ /** Undo information for a CTxIn
+@@ -841,7 +841,7 @@ public:
+             filein >> hashChecksum;
+         }
+         catch (std::exception &e) {
+-            return error("%s() : deserialize or I/O error", __PRETTY_FUNCTION__);
++            return error("%s() : deserialize or I/O error", BOOST_CURRENT_FUNCTION);
+         }
+ 
+         // Verify checksum
+@@ -1505,7 +1505,7 @@ public:
+             filein >> *this;
+         }
+         catch (std::exception &e) {
+-            return error("%s() : deserialize or I/O error", __PRETTY_FUNCTION__);
++            return error("%s() : deserialize or I/O error", BOOST_CURRENT_FUNCTION);
+         }
+ 
+         // Check the header
+diff --git a/src/net.cpp b/src/net.cpp
+index b75a2d3..c774d07 100644
+--- a/src/net.cpp
++++ b/src/net.cpp
+@@ -1444,14 +1444,18 @@ void ThreadOpenAddedConnections()
+         {
+             LOCK(cs_vNodes);
+             BOOST_FOREACH(CNode* pnode, vNodes)
+-                for (list<vector<CService> >::iterator it = lservAddressesToAdd.begin(); it != lservAddressesToAdd.end(); it++)
+-                    BOOST_FOREACH(CService& addrNode, *(it))
++                for (list<vector<CService> >::iterator it = lservAddressesToAdd.begin(); it != lservAddressesToAdd.end(); it++) {
++                    BOOST_FOREACH(CService& addrNode, *(it)) {
+                         if (pnode->addr == addrNode)
+                         {
+                             it = lservAddressesToAdd.erase(it);
+-                            it--;
++							if (it != lservAddressesToAdd.begin())
++								it--;
+                             break;
+                         }
++					}
++					if (it == lservAddressesToAdd.end()) break;
++				}
+         }
+         BOOST_FOREACH(vector<CService>& vserv, lservAddressesToAdd)
+         {
+diff --git a/src/script.cpp b/src/script.cpp
+index 3daa262..3602f96 100644
+--- a/src/script.cpp
++++ b/src/script.cpp
+@@ -794,11 +794,11 @@ bool EvalScript(vector<vector<unsigned char> >& stack, const CScript& script, co
+                     valtype& vch = stacktop(-1);
+                     valtype vchHash((opcode == OP_RIPEMD160 || opcode == OP_SHA1 || opcode == OP_HASH160) ? 20 : 32);
+                     if (opcode == OP_RIPEMD160)
+-                        RIPEMD160(&vch[0], vch.size(), &vchHash[0]);
++                        RIPEMD160(vch.data(), vch.size(), &vchHash[0]);
+                     else if (opcode == OP_SHA1)
+-                        SHA1(&vch[0], vch.size(), &vchHash[0]);
++                        SHA1(vch.data(), vch.size(), &vchHash[0]);
+                     else if (opcode == OP_SHA256)
+-                        SHA256(&vch[0], vch.size(), &vchHash[0]);
++                        SHA256(vch.data(), vch.size(), &vchHash[0]);
+                     else if (opcode == OP_HASH160)
+                     {
+                         uint160 hash160 = Hash160(vch);
+diff --git a/src/script.h b/src/script.h
+index 6a51b97..2ef30bc 100644
+--- a/src/script.h
++++ b/src/script.h
+@@ -643,27 +643,27 @@ public:
+     void Serialize(Stream &s, int nType, int nVersion) const {
+         std::vector<unsigned char> compr;
+         if (Compress(compr)) {
+-            s << CFlatData(&compr[0], &compr[compr.size()]);
++            s << CFlatData(compr.data(), compr.data() + compr.size() );
+             return;
+         }
+         unsigned int nSize = script.size() + nSpecialScripts;
+         s << VARINT(nSize);
+-        s << CFlatData(&script[0], &script[script.size()]);
++        s << CFlatData(script.data(), script.data() + script.size());
+     }
+ 
+     template<typename Stream>
+     void Unserialize(Stream &s, int nType, int nVersion) {
+         unsigned int nSize = 0;
+-        s >> VARINT(nSize);
++        s >> VARINT(nSize); 
+         if (nSize < nSpecialScripts) {
+             std::vector<unsigned char> vch(GetSpecialSize(nSize), 0x00);
+-            s >> REF(CFlatData(&vch[0], &vch[vch.size()]));
++            s >> REF(CFlatData(vch.data(), vch.data()+vch.size()));
+             Decompress(nSize, vch);
+             return;
+         }
+         nSize -= nSpecialScripts;
+         script.resize(nSize);
+-        s >> REF(CFlatData(&script[0], &script[script.size()]));
++        s >> REF(CFlatData(script.data(), script.data()+script.size()));
+     }
+ };
+ 
+diff --git a/src/serialize.h b/src/serialize.h
+index ab4be31..08a7b43 100644
+--- a/src/serialize.h
++++ b/src/serialize.h
+@@ -68,6 +68,7 @@ enum
+         assert(fGetSize||fWrite||fRead); /* suppress warning */ \
+         s.nType = nType;                        \
+         s.nVersion = nVersion;                  \
++        std::map<int, int>  mapUnkIds;          \
+         {statements}                            \
+         return nSerSize;                        \
+     }                                           \
+@@ -80,6 +81,7 @@ enum
+         const bool fRead = false;               \
+         unsigned int nSerSize = 0;              \
+         assert(fGetSize||fWrite||fRead); /* suppress warning */ \
++        std::map<int, int>  mapUnkIds;          \
+         {statements}                            \
+     }                                           \
+     template<typename Stream>                   \
+@@ -91,6 +93,7 @@ enum
+         const bool fRead = true;                \
+         unsigned int nSerSize = 0;              \
+         assert(fGetSize||fWrite||fRead); /* suppress warning */ \
++        std::map<int, int>  mapUnkIds;          \
+         {statements}                            \
+     }
+ 
+@@ -849,7 +852,7 @@ public:
+         Init(nTypeIn, nVersionIn);
+     }
+ 
+-    CDataStream(const std::vector<unsigned char>& vchIn, int nTypeIn, int nVersionIn) : vch((char*)&vchIn.begin()[0], (char*)&vchIn.end()[0])
++    CDataStream(const std::vector<unsigned char>& vchIn, int nTypeIn, int nVersionIn) : vch(vchIn.begin(), vchIn.end())
+     {
+         Init(nTypeIn, nVersionIn);
+     }
+diff --git a/src/txdb.cpp b/src/txdb.cpp
+index 3d34710..695636f 100644
+--- a/src/txdb.cpp
++++ b/src/txdb.cpp
+@@ -152,7 +152,7 @@ bool CCoinsViewDB::GetStats(CCoinsStats &stats) {
+             }
+             pcursor->Next();
+         } catch (std::exception &e) {
+-            return error("%s() : deserialize error", __PRETTY_FUNCTION__);
++            return error("%s() : deserialize error", BOOST_CURRENT_FUNCTION);
+         }
+     }
+     delete pcursor;
+@@ -234,7 +234,7 @@ bool CBlockTreeDB::LoadBlockIndexGuts()
+                 break; // if shutdown requested or finished loading block index
+             }
+         } catch (std::exception &e) {
+-            return error("%s() : deserialize error", __PRETTY_FUNCTION__);
++            return error("%s() : deserialize error", BOOST_CURRENT_FUNCTION);
+         }
+     }
+     delete pcursor;

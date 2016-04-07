@@ -7,16 +7,17 @@ src/*.exe
 *.o
 *.patch
 .litecoin
+*.dll
 
 # Compilation and Qt preprocessor part
 *.qm
 Makefile
-litecoin-qt
-Litecoin-Qt.app
+Smartcoin-qt
+Smartcoin-qt.app
 
 # Unit-tests
 Makefile.test
-litecoin-qt_test
+smartcoin-qt_test
 
 # Resources cpp
 qrc_*.cpp
